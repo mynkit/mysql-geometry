@@ -1,0 +1,18 @@
+version: "2"
+services:
+  mysql:
+    container_name: mysql_host
+    image: mysql:5.7.12
+    volumes:
+      - ./db/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: rootpw
+      MYSQL_DATABASE: sample_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: E9c9y6IwaDzNtLAfJn3qd3Sa20pOCz
+      BIND-ADDRESS: 0.0.0.0
+    tty: true
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
